@@ -1,0 +1,49 @@
+@CHARSET "UTF-8";
+/**
+ * @doc类百度百科，文章内容右侧目录导航
+ * @author fanggang
+ * @time 2016-04-08 16:43:42 周五
+ */
+.side-catalog{visibility:hidden;opacity:0;width:260px;height:456px;position:fixed;bottom:10px;font-size:14px;font-family:宋体;line-height:19px;background-color:#fff;}
+.side-catalog .side-bar{position:absolute;top:0;width:0;height:353px;background-color:#eaeaea;border:1px solid #eaeaea;border-top:0;border-bottom:0;left:5px}
+.side-catalog .side-bar .circle.start,.side-catalog .side-bar .circle.end{position:absolute;left:-5px;width:10px;height:10px;background:transparent url(../image/articleNavSideToolbar.gif) 0 -199px no-repeat;zoom:1;overflow:hidden}
+.side-catalog .side-bar .circle.start{top:0}
+.side-catalog .side-bar .circle.end{margin:0;bottom:0}
+.side-catalog .catalog-scroller{padding-top:15px;position:absolute;z-index:1;top:0;left:0;width:210px;height:330px;overflow:hidden}
+.side-catalog .catalog-scroller .catalog-list{width:214px;height:auto;position:relative;top:0;}
+.side-catalog .catalog-scroller .catalog-list .catalog-title{position:relative;margin-bottom:7px;padding-left:20px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title .text{line-height:20px;display:block}
+.side-catalog .catalog-scroller .catalog-list .catalog-title .pointer{position:absolute;display:block;width:10px;height:10px;cursor:pointer;margin-top:4px;left:0;background:transparent url(../image/articleNavSideToolbar.gif) 3px -222px no-repeat}
+.side-catalog .catalog-scroller .catalog-list .catalog-title .pointer:hover{background-position:3px -245px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title:hover .text{background:#f5f5f5;border-radius:2px;box-shadow:0 1px 0 #eaeaea}
+.side-catalog .catalog-scroller .catalog-list .catalog-title:hover .pointer{background-position:3px -245px}
+/* 定位后的样式 */
+.side-catalog .catalog-scroller .catalog-list .catalog-title.highlight .pointer:hover{background-position:3px -245px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.highlight .text{background:#f5f5f5;border-radius:2px;box-shadow:0 1px 0 #eaeaea}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.highlight .pointer{background-position:3px -245px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level1 .text{padding-left:10px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level1 .title-index{color:#999;font-weight:700;font-family:Arial,serif;font-size:14px;padding-right:5px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level1 .title-link{color:#555;font-weight:700;text-decoration:none}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level2 .text{padding-left:22px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level2 .title-index{color:#999;font-family:Arail;font-size:14px;padding-right:5px}
+.side-catalog .catalog-scroller .catalog-list .catalog-title.level2 .title-link{color:#666;text-decoration:none}
+.side-catalog .catalog-scroller .arrow{left:0;z-index:2;top:5px;position:absolute;height:13px;width:18px;cursor:pointer;background:transparent url(../image/articleNavSideToolbar.gif) -271px -38px no-repeat}
+.side-catalog.collapse{height:96px;overflow:hidden}
+.side-catalog.collapse .toggle-button{background-position:-104px 0}
+.side-catalog.collapse .toggle-button:hover{background-position:-154px 0}
+.side-catalog.collapse .side-bar{display:none}
+.side-catalog.collapse .catalog-scroller{display:none}
+.side-catalog.collapse .right-wrap{display:none}
+.side-catalog:hover .right-wrap{display:block}
+.side-catalog .right-wrap{position:absolute;display:none;width:22px;height:50px;top:140px;right:20px}
+.side-catalog .right-wrap .go-up,.side-catalog .right-wrap .go-down{display:block;width:22px;height:25px;background:transparent url(../image/articleNavSideToolbar.gif) no-repeat}
+.side-catalog .right-wrap .go-up{background-position:-248px -83px}
+.side-catalog .right-wrap .go-up.disable{background-position:-275px -83px}
+.side-catalog .right-wrap .go-down{background-position:-248px -108px}
+.side-catalog .right-wrap .go-down.disable{background-position:-275px -108px}
+.side-catalog .bottom-wrap{position:absolute;bottom:51px;height:45px}
+.side-catalog .bottom-wrap .toggle-button,.side-catalog .bottom-wrap .gotop-button{display:block;width:45px;height:45px;cursor:pointer}
+.side-catalog .bottom-wrap .toggle-button{background:transparent url(../image/articleNavSideToolbar.gif) no-repeat 0 0}
+.side-catalog .bottom-wrap .toggle-button:hover{background-position:-53px 0}
+.side-catalog .bottom-wrap .gotop-button{margin-top:6px;background:transparent url(../image/articleNavSideToolbar.gif) no-repeat -1px -62px}
+.side-catalog .bottom-wrap .gotop-button:hover{background-position:-74px -62px}
