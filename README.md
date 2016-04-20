@@ -27,7 +27,15 @@ autoCatalog.js调用很简单，只需普通jQuery插件使用的三步即可:
     <script type="text/javascript" src="js/autoCatalog.js"></script>
     
 #### 第三步：调用autoCatalog
+    // 默认配置
     $('#mainContent').autoCatalog();
+    
+    // 自定义配置
+    $('#mainContent').autoCatalog({
+        "level1": 'title-levle1',
+        "level2": 'title-levle2',
+        "catalogTarget": '#yourArticleCatalog'
+    });
 
 
 ## 参数说明
@@ -36,7 +44,7 @@ autoCatalog.js调用很简单，只需普通jQuery插件使用的三步即可:
     - **默认值**： `'h2'`
     - **含义**： 第一级标题选择器，可以为html标签名，也可以为jQuery选择器字符串
     - **示例**： `'h2'`
-- `levele2`
+- `level2`
     - **数据类型**： 字符串
     - **默认值**： `'h3'`
     - **含义**： 第二级标题选择器，可以为html标签名，也可以为jQuery选择器字符串
