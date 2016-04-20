@@ -9,8 +9,8 @@
         var defaultConf = {
             level1: 'h2',                       // 第一级别选择器
             level2: 'h3',                       // 第二级别选择器
-            step: 48,                           // 按钮滚动导航目录步距
             catalogTarget: '#articleCatalog',   // 放置生成目录的容器
+            step: 48,                           // 按钮滚动导航目录步距
             alwaysShow: true,                   // 是否一直显示
             collapseOnInit: false               // 初始化时折叠
         },
