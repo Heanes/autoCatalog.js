@@ -12,7 +12,8 @@
             catalogTarget: '#articleCatalog',   // 放置生成目录的容器
             step: 48,                           // 按钮滚动导航目录步距
             alwaysShow: true,                   // 是否一直显示
-            collapseOnInit: false               // 初始化时折叠
+            collapseOnInit: false,              // 初始化时折叠
+            showLevel2Pointer: false            // 是否显示二级目录前的小圆点
         },
             conf = $.extend({}, defaultConf, userConf || {});
 
@@ -54,9 +55,9 @@
         // 生成锚点
         function generateAnchorStr(anchor){
             return '<div class="anchor-list">'
-                + '<a name="' + anchor.anchorAddress + '" class="lemma-anchor para-title anchor-address"></a>'
-                + '<a name="sub1001_' + anchor.anchorAddress + '" class="lemma-anchor-address"></a>'
-                + '<a name="' + anchor.anchorName + '" class="lemma-anchor anchor-name"></a>'
+                    + '<a name="' + anchor.anchorAddress + '" class="lemma-anchor para-title anchor-address"></a>'
+                    + '<a name="sub1001_' + anchor.anchorAddress + '" class="lemma-anchor-address"></a>'
+                    + '<a name="' + anchor.anchorName + '" class="lemma-anchor anchor-name"></a>'
                 + '</div>';
         }
 
@@ -65,20 +66,23 @@
             var catalogStr = '';
             if(level == 1){
                 catalogStr = '<dt class="catalog-title level1">'
-                    + '<em class="pointer"></em>'
-                    + '<span class="text">'
-                    + '<span class="title-index">' + anchor.anchorAddress + '</span>'
-                    + '<a href="#' + anchor.anchorAddress + '" class="title-link">' + anchor.anchorName + '</a>'
-                    + '</span>'
-                    + '</dt>';
+                                + '<em class="pointer"></em>'
+                                + '<span class="text">'
+                                + '<span class="title-index">' + anchor.anchorAddress + '</span>'
+                                + '<a href="#' + anchor.anchorAddress + '" class="title-link">' + anchor.anchorName + '</a>'
+                                + '</span>'
+                            + '</dt>';
             }
             else if(level == 2){
-                catalogStr = '<dd class="catalog-title level2">'
-                    + '<em class="pointer"></em>'
-                    + '<span class="text">'
-                    + '<span class="title-index">' + h2 + '.' + (h3 - 1) + '</span>'
-                    + '<a href="#' + anchor.anchorAddress + '" class="title-link">' + anchor.anchorName + '</a>'
-                    + '</span>'
+                catalogStr = '<dd class="catalog-title level2">';
+                if(conf.showLevel2Pointer){
+                    catalogStr += '<em class="pointer"></em>';
+                }
+                catalogStr +=
+                          '<span class="text">'
+                        + '<span class="title-index">' + h2 + '.' + (h3 - 1) + '</span>'
+                        + '<a href="#' + anchor.anchorAddress + '" class="title-link">' + anchor.anchorName + '</a>'
+                        + '</span>'
                     + '</dd>';
             }
             return catalogStr;
@@ -87,25 +91,26 @@
             // 先清一次content中的锚链接
             $content.find('.anchor-list').remove();
 
-            var catalogStructStr = '<div class="side-catalog">'
-                +'<div class="side-bar">'
-                +'<em class="circle start"></em>'
-                +'<em class="circle end"></em>'
-                +'</div>'
-                +'<div class="catalog-scroller">'
-                +'<dl class="catalog-list">'
-                +'<a class="arrow" href="javascript:void(0);"></a>'
-                +'</dl>'
-                +'</div>'
-                +'<div class="right-wrap">'
-                +'<a class="go-up disable" href="javascript:void(0);"></a>'
-                +'<a class="go-down" href="javascript:void(0);"></a>'
-                +'</div>'
-                +'<div class="bottom-wrap">'
-                +'<a class="toggle-button" href="javascript:void(0);"></a>'
-                +'<a class="gotop-button" href="javascript:void(0);"></a>'
-                +'</div>'
-                +'</div>';
+            var catalogStructStr =
+                '<div class="side-catalog">'
+                    + '<div class="side-bar">'
+                        + '<em class="circle start"></em>'
+                        + '<em class="circle end"></em>'
+                    + '</div>'
+                    + '<div class="catalog-scroller">'
+                        + '<dl class="catalog-list">'
+                            + '<a class="arrow" href="javascript:void(0);"></a>'
+                        + '</dl>'
+                    + '</div>'
+                    + '<div class="right-wrap">'
+                        + '<a class="go-up disable" href="javascript:void(0);"></a>'
+                        + '<a class="go-down" href="javascript:void(0);"></a>'
+                    + '</div>'
+                    + '<div class="bottom-wrap">'
+                        + '<a class="toggle-button" href="javascript:void(0);"></a>'
+                        + '<a class="gotop-button" href="javascript:void(0);"></a>'
+                    + '</div>'
+                + '</div>';
             $articleCatalogContainer.empty().append(catalogStructStr);
             var $articleCatalog = $articleCatalogContainer.find('.side-catalog');
             if(conf.alwaysShow){
