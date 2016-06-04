@@ -116,7 +116,7 @@
             }
 
             var h2 = 1, h3 = 1, anchorAddress = '', anchorName = '', anchor = {}, level = 1;//, catalogStr = '';
-            $.each($headerList, function (i, item) {
+            $headerList.each(function (i, item) {
                 // 1. 顺序生成多级章节
                 if(item.tagName.toLowerCase() == conf.level1.toLowerCase() || $(item).hasClass(conf.level1)){
                     level = 1;
