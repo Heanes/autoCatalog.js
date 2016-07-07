@@ -21,6 +21,10 @@
             $headerList = $content.find(conf.level1 + ',' + conf.level2);
         var $headerListLength = $headerList.length;
         var $articleCatalogContainer = $(conf.catalogTarget);
+        if($articleCatalogContainer.length <= 0){
+            console.warn('autoCatalog.js: Not find where to place the catalog, so the catalog will not generate.');
+            return null;
+        }
 
         //导航的滚动，以及向上，向下按钮的显示隐藏
         function scrollSlide(that, index, $articleCatalog, $catalogScrollerOuter, $catalogScrollerInner, $goDownBtn, $goUpBtn, $arrow){
