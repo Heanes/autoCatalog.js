@@ -27,8 +27,8 @@
         <div class="article-title">
             <h1>文章标题</h1>
         </div>
-        <div class="main-content" id="mainContent" contenteditable="true">
-            <div class="article-content">
+        <div class="main-content" contenteditable="true">
+            <div class="article-content" id="articleContent">
                 <h2 class="title-text">第一章</h2>
                 <p class="placeholder ph-large">内容</p>
                 <h2 class="title-text">第二章</h2>
@@ -72,17 +72,17 @@
 
 <script type="text/javascript">
     $(function() {
-        var $mainContent = $('#mainContent');
+        var $articleContent = $('#articleContent');
         /**
          * @doc 仿百度百科自动生成文章目录导航
-         * @authro fanggang
+         * @author fanggang
          * @time 2016-04-13 18:07:26
          */
-        $mainContent.autoCatalog({
+        $articleContent.autoCatalog({
             step:90,
             alwaysShow:true
         });
-        $mainContent.on('input', function () {
+        $articleContent.on('input', function () {
             $(this).autoCatalog({
                 step:90,
                 alwaysShow:true
