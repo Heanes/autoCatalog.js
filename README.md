@@ -11,7 +11,7 @@
 4. 样式可以自由定义，只需更改css文件即可;
 
 ## Demo
-demo样式见: [autoCatolog demo](http://html.heanes.com/blog/html/heanes/article/autoCatalog/ "autoCatolog demo")
+demo样式见: [autoCatolog demo](http://cdn.heanes.com/js/1.0/autoCatalog/ "autoCatolog demo")
 
 或者实例: [友谊的小船说翻就翻 (╮(╯▽╰)╭)](http://html.heanes.com/blog/html/heanes/article/friendship.html "友谊的小船说翻就翻 (╮(╯▽╰)╭)")
 
