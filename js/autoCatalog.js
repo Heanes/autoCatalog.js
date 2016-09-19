@@ -1,6 +1,6 @@
 /**
  * @doc 根据文章内容自动生成导航目录
- * @author FangGang,Heanes,heanes@163.com
+ * @author Heanes,heanes@163.com
  * @time 2016-04-13 15:12:33
  */
 "use strict";
@@ -223,7 +223,7 @@
 
             /**
              * @doc 滚动到文章内容起始位置
-             * @author fanggang
+             * @author Heanes
              * @time 2016-04-13 17:03:16
              */
             $articleCatalog.find('.gotop-button').on('click', function () {

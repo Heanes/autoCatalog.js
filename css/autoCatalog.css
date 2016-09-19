@@ -1,7 +1,7 @@
 @CHARSET "UTF-8";
 /**
  * @doc类百度百科，文章内容右侧目录导航
- * @author fanggang
+ * @author Heanes
  * @time 2016-04-08 16:43:42 周五
  */
 .side-catalog{visibility:hidden;opacity:0;width:260px;height:456px;position:fixed;bottom:10px;font-size:14px;line-height:19px;background-color:#fff;}
