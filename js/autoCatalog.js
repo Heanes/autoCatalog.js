@@ -1,5 +1,5 @@
 /**
- * @doc 根据文章内容自动生成导航目录
+ * @doc 根据文章内容自动生成导航目录 @todo 支持更多级别的目录，支持主题（see 搜狗百科）
  * @author FangGang,Heanes,heanes@163.com
  * @time 2016-04-13 15:12:33
  */
