@@ -3,7 +3,7 @@
 <head>
     <title>文章-仿百度百科</title>
     <meta charset="utf-8">
-    <link type="text/css" rel="stylesheet" href="css/autoCatalog.css">
+    <link type="text/css" rel="stylesheet" href="../css/autoCatalog.css">
     <style>
         *{margin:0;padding:0;box-sizing:border-box;}
         .wrap{width:1130px;overflow:hidden;margin:0 auto }
@@ -67,8 +67,8 @@
         <div class="side-content" id="articleCatalog"></div>
     </div>
 </div>
-<script type="text/javascript" src="js/jquery.min.js"></script>
-<script type="text/javascript" src="js/autoCatalog.js"></script>
+<script type="text/javascript" src="../resource/js/jquery.min.js"></script>
+<script type="text/javascript" src="../js/autoCatalog.js"></script>
 
 <script type="text/javascript">
     $(function() {
@@ -79,11 +79,13 @@
          * @time 2016-04-13 18:07:26
          */
         $articleContent.autoCatalog({
+            catalogContainer: $('#articleCatalog'),        // 放置生成目录的容器dom
             step:90,
             alwaysShow:true
         });
         $articleContent.on('input', function () {
             $(this).autoCatalog({
+                catalogContainer: $('#articleCatalog'),        // 放置生成目录的容器dom
                 step:90,
                 alwaysShow:true
             });
