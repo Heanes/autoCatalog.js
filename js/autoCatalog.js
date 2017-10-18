@@ -140,8 +140,8 @@
                     anchorAddress = h2 + '_' + h3;
                     h3++;
                 }
-                anchorName = $(item).html().trim();
-                anchor = {anchorName: anchorName,anchorAddress: anchorAddress};
+                anchorName = $(item).text().trim();// 此处只取文本内容
+                anchor = {anchorName: anchorName, anchorAddress: anchorAddress};
                 //anchorList.push(anchor);
                 // 2. 插入锚点链接内容到相应h2~h3的节点上方
                 $(item).before(generateAnchorStr(anchor));
