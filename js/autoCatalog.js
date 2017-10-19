@@ -96,7 +96,7 @@
             $content.find('.anchor-list').remove();
 
             var catalogStructStr =
-                '<div class="side-catalog">'
+                '<div class="side-catalog auto-catalog">'
                     + '<div class="side-bar">'
                         + '<em class="circle start"></em>'
                         + '<em class="circle end"></em>'
