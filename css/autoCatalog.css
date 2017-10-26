@@ -7,7 +7,7 @@
 .auto-catalog.side-catalog{visibility:hidden;opacity:0;width:260px;height:456px;position:fixed;bottom:10px;font-size:14px;line-height:19px;background-color:#fff;}
 .auto-catalog.side-catalog .side-bar{position:absolute;top:0;width:0;height:353px;background-color:#eaeaea;border:1px solid #eaeaea;border-top:0;border-bottom:0;left:5px}
 .auto-catalog.side-catalog .side-bar .circle.start,
-.auto-catalog..side-catalog .side-bar .circle.end{position:absolute;left:-5px;width:10px;height:10px;background:transparent url(../image/articleNavSideToolbar.gif) 0 -199px no-repeat;zoom:1;overflow:hidden}
+.auto-catalog.side-catalog .side-bar .circle.end{position:absolute;left:-5px;width:10px;height:10px;background:transparent url(../image/articleNavSideToolbar.gif) 0 -199px no-repeat;zoom:1;overflow:hidden}
 .auto-catalog.side-catalog .side-bar .circle.start{top:0}
 .auto-catalog.side-catalog .side-bar .circle.end{margin:0;bottom:0}
 .auto-catalog.side-catalog .catalog-scroller{padding-top:15px;position:absolute;z-index:1;top:0;left:0;width:100%;height:330px;overflow:hidden}
@@ -45,7 +45,7 @@
 .auto-catalog.side-catalog .right-wrap .go-down.disable{background-position:-275px -108px}
 .auto-catalog.side-catalog .bottom-wrap{position:absolute;bottom:51px;height:45px}
 .auto-catalog.side-catalog .bottom-wrap .toggle-button,
-.auto-catalog..side-catalog .bottom-wrap .gotop-button{display:block;width:45px;height:45px;cursor:pointer}
+.auto-catalog.side-catalog .bottom-wrap .gotop-button{display:block;width:45px;height:45px;cursor:pointer}
 .auto-catalog.side-catalog .bottom-wrap .toggle-button{background:transparent url(../image/articleNavSideToolbar.gif) no-repeat 0 0}
 .auto-catalog.side-catalog .bottom-wrap .toggle-button:hover{background-position:-53px 0}
 .auto-catalog.side-catalog .bottom-wrap .gotop-button{margin-top:6px;background:transparent url(../image/articleNavSideToolbar.gif) no-repeat -1px -62px}
