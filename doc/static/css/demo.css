@@ -1,0 +1,56 @@
+@charset "UTF-8";
+/**
+ * @doc 示例样式
+ * @author Heanes
+ * @time 2018-07-04 15:46:38 周三
+ */
+html, body {
+  margin: 0;
+  padding: 0; }
+
+p {
+  margin: 0;
+  padding: 0; }
+
+.demo-wrap {
+  width: 1130px;
+  position: relative;
+  padding: 20px;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: #f7f7f7; }
+  .demo-wrap .page-content .article-container {
+    width: 790px;
+    float: left;
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 1000px; }
+    .demo-wrap .page-content .article-container .article-title {
+      text-align: center;
+      margin: 20px 0; }
+    .demo-wrap .page-content .article-container .article-content h2.title-text {
+      font-size: 22px;
+      padding: 20px 0; }
+    .demo-wrap .page-content .article-container .article-content h3.title-text {
+      padding: 14px 0;
+      text-indent: 2em; }
+    .demo-wrap .page-content .article-container .article-content p {
+      text-indent: 2em;
+      font-size: 14px; }
+    .demo-wrap .page-content .article-container .article-content .placeholder {
+      line-height: 1.8em; }
+      .demo-wrap .page-content .article-container .article-content .placeholder:before {
+        content: "章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容章节内容正文内容"; }
+      .demo-wrap .page-content .article-container .article-content .placeholder.ph-large {
+        height: 400px; }
+      .demo-wrap .page-content .article-container .article-content .placeholder.ph-mini {
+        height: 50px; }
+  .demo-wrap .page-content .side-content {
+    float: left;
+    width: 270px; }
+    .demo-wrap .page-content .side-content .article-catalog {
+      position: fixed;
+      bottom: 20px;
+      height: 500px; }
+
+/*# sourceMappingURL=demo.css.map */

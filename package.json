@@ -1,0 +1,45 @@
+{
+    "name": "autoCatalog",
+    "description": "",
+    "version": "1.0.0",
+    "main": "./dist/js/autoCatalog.js",
+    "directories": {
+        "doc": "doc"
+    },
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-preset-env": "^1.7.0",
+        "grunt": "^1.0.3",
+        "grunt-babel": "^7.0.0",
+        "grunt-cli": "^1.2.0",
+        "grunt-contrib-clean": "^1.1.0",
+        "grunt-contrib-concat": "^1.0.1",
+        "grunt-contrib-copy": "^1.0.0",
+        "grunt-contrib-cssmin": "^2.2.1",
+        "grunt-contrib-jshint": "^1.1.0",
+        "grunt-contrib-uglify": "^3.3.0",
+        "grunt-release": "^0.14.0"
+    },
+    "scripts": {
+        "grunt": "grunt --gruntfile Gruntfile.js",
+        "lint": "eslint src/autoCatalog.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Heanes/autoCatalog.js.git"
+    },
+    "keywords": [
+        "jquery",
+        "plugin",
+        "develop",
+        "template"
+    ],
+    "author": "Heanes <heanes@163.com> (http://www.heanes.com/)",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/Heanes/autoCatalog.js/issues"
+    },
+    "homepage": "https://github.com/Heanes/autoCatalog.js",
+    "config": {},
+    "types": "./index.d.ts"
+}

@@ -4,7 +4,7 @@
 .settings
 .project
 
-data/upload
-public/cache
-public/html
-# public/static/libs
+node_modules
+webpack/**/*.css
+webpack/**/*.map
+/**/*.log

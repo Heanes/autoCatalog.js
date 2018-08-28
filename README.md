@@ -11,7 +11,11 @@
 4. 样式可以自由定义，只需更改css文件即可;
 
 ## Demo
-demo样式见: [autoCatolog demo](http://cdn.heanes.com/js/1.0/autoCatalog/ "autoCatolog demo")
+<center>
+<img src="https://github.com/Heanes/autoCatalog.js/blob/master/doc/static/image/autoCatalog.js_demo.gif" alt="demo截图" />
+demo截图
+</center>
+demo样式见: [autoCatalog.js demo](http://cdn.heanes.com/js/autoCatalog/1.0/demo/ "autoCatalog demo")
 
 或者实例: [友谊的小船说翻就翻 (╮(╯▽╰)╭)](http://html.heanes.com/blog/html/heanes/article/friendship.html "友谊的小船说翻就翻 (╮(╯▽╰)╭)")
 

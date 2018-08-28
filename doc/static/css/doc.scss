@@ -1,0 +1,176 @@
+@charset "UTF-8";
+/**
+ * @doc 文档
+ * @author Heanes
+ * @time 2018-08-07 16:09:35 周二
+ */
+
+.main-wrap{
+    width: 1200px;
+    padding: 0 20px;
+    margin: 0 auto;
+
+
+    .page-title{
+        margin: 20px auto;
+
+        .title{
+            text-align: center;
+        }
+
+    }
+
+    .table{
+        p{
+            margin: 0;
+        }
+        pre{
+            margin: 0;
+            max-width: 180px;
+        }
+
+        &.table-option-description{
+            th{
+                &:nth-child(1){
+                }
+                &:nth-child(2){
+                }
+            }
+        }
+    }
+
+    .table-enum-option{
+        table-layout: fixed;
+        width: auto;
+        margin: 0;
+        border: 0;
+        tbody{
+            tr{
+                &:nth-child(2n){
+                    background-color: inherit;
+                }
+                td{
+                    border: 0;
+                    &:nth-child(2){
+                        max-width: 190px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+$leftWrapWidth:260px;
+$rightWrapWidth:260px;
+$mainWrapMaxWidth:1400px;
+/* Widely screen */
+@media screen and (min-width:1367px){
+    .main-wrap{
+        width:94%;
+        max-width:$mainWrapMaxWidth;
+        .left-wrap{
+            width:$leftWrapWidth;
+            position:relative;
+            margin-right:-$leftWrapWidth;
+            z-index:2
+        }
+        .right-wrap{
+            width:$rightWrapWidth;
+            position:relative;
+            margin-left:-$rightWrapWidth;
+        }
+        .center-wrap{
+            position:relative;
+            width:100%;
+            padding-left:$leftWrapWidth;
+            padding-right:$rightWrapWidth;
+        }
+    }
+    //.main-wrap .center-wrap .center-content{position:relative;margin-left:$leftWrapWidth;margin-right:$rightWrapWidth;}
+}
+
+/* Normal noteBook */
+/* 此宽度下不显示左右钉住工具栏，不显示左侧栏 */
+@media screen and (max-width:1366px){
+    .main-wrap{
+        width:1200px;
+        .center-wrap{
+            width:100%;
+            position:relative;
+            padding-right:$rightWrapWidth;
+        }
+        /*.center-wrap .center-content{
+            position:relative;
+            margin-right:$rightWrapWidth;
+        }*/
+        .right-wrap{
+            width:$rightWrapWidth;
+            position:relative;
+            margin-left:-$rightWrapWidth;
+        }
+        .left-wrap{
+            display:none;
+        }
+    }
+    .left-wrap, .left-bar, .right-bar{
+        display:none;
+    }
+}
+
+@media screen and (max-width:1200px){
+    .main-wrap{
+        width:100%;
+        float:none;
+        .center-wrap{
+            width:100%;
+        }
+    }
+}
+
+@media screen and (max-width:767px){
+    .main-wrap{
+        .center-wrap{
+            padding-right:0;
+        }
+        //.center-wrap .center-content{position:relative;margin-right:0;}
+        .right-wrap{display:none;}
+    }
+}
+
+/* iPad */
+@media screen and (min-width:767px) and (max-width:1139px){
+
+}
+
+@media screen and (max-width:479px){
+    h1,h2{font-size:16px}
+    h3{font-size:14px}
+}
+/* iPhone 6plus */
+@media screen and (min-width:414px) and (max-width:479px){
+
+}
+/* iPhone 6 */
+@media screen and (min-width:375px) and (max-width:413px){
+
+}
+/* iPhone 3 4 5 */
+@media screen and (min-width:320px) and (max-width:374px){
+
+}
+
+
+/* Android and + */
+@media screen and (min-width:480px) and (max-width:639px){
+
+}
+/* Android and + */
+@media screen and (min-width:640px) and (max-width:767px){
+
+}
+
+/* 设备分辨率媒体查询 */
+@media screen and (-webkit-min-device-pixel-ratio:2),screen and (max--moz-device-pixel-ratio:2){
+
+}

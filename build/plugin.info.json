@@ -1,0 +1,28 @@
+{
+    "name":         "autoCatalog",
+    "version":      "1.0.0",
+    "title":        "AutoCatalog",
+    "description":  "A powerful autoCatalog jquery plugin",
+    "author":       {
+        "name":  "Heanes",
+        "email": "heanes#163.com",
+        "url":   "https://www.heanes.com/"
+    },
+    "licenses": {
+        "type": "MIT License",
+        "url": "http://opensource.org/licenses/MIT"
+    },
+    "dependencies": {
+        "jquery": ">=1.7"
+    },
+    "keywords":     [
+        "bootstrap.table"
+    ],
+    "homepage":     "https://github.com/heanes/autoCatalog.js",
+    "demo":         "https://github.com/heanes/autoCatalog.js",
+    "bugs":         {
+        "url": "https://github.com/heanes/autoCatalog.js/issues"
+    },
+    "docs":         "https://github.com/heanes/autoCatalog.js",
+    "download":     "https://github.com/heanes/autoCatalog.js/archive/master.zip"
+}

@@ -1,0 +1,98 @@
+@charset "UTF-8";
+/**
+ * @doc 文档
+ * @author Heanes
+ * @time 2018-08-07 16:09:35 周二
+ */
+.main-wrap {
+  width: 1200px;
+  padding: 0 20px;
+  margin: 0 auto; }
+  .main-wrap .page-title {
+    margin: 20px auto; }
+    .main-wrap .page-title .title {
+      text-align: center; }
+  .main-wrap .table p {
+    margin: 0; }
+  .main-wrap .table pre {
+    margin: 0;
+    max-width: 180px; }
+  .main-wrap .table-enum-option {
+    table-layout: fixed;
+    width: auto;
+    margin: 0;
+    border: 0; }
+    .main-wrap .table-enum-option tbody tr:nth-child(2n) {
+      background-color: inherit; }
+    .main-wrap .table-enum-option tbody tr td {
+      border: 0; }
+      .main-wrap .table-enum-option tbody tr td:nth-child(2) {
+        max-width: 190px; }
+
+/* Widely screen */
+@media screen and (min-width: 1367px) {
+  .main-wrap {
+    width: 94%;
+    max-width: 1400px; }
+    .main-wrap .left-wrap {
+      width: 260px;
+      position: relative;
+      margin-right: -260px;
+      z-index: 2; }
+    .main-wrap .right-wrap {
+      width: 260px;
+      position: relative;
+      margin-left: -260px; }
+    .main-wrap .center-wrap {
+      position: relative;
+      width: 100%;
+      padding-left: 260px;
+      padding-right: 260px; } }
+/* Normal noteBook */
+/* 此宽度下不显示左右钉住工具栏，不显示左侧栏 */
+@media screen and (max-width: 1366px) {
+  .main-wrap {
+    width: 1200px;
+    /*.center-wrap .center-content{
+        position:relative;
+        margin-right:$rightWrapWidth;
+    }*/ }
+    .main-wrap .center-wrap {
+      width: 100%;
+      position: relative;
+      padding-right: 260px; }
+    .main-wrap .right-wrap {
+      width: 260px;
+      position: relative;
+      margin-left: -260px; }
+    .main-wrap .left-wrap {
+      display: none; }
+
+  .left-wrap, .left-bar, .right-bar {
+    display: none; } }
+@media screen and (max-width: 1200px) {
+  .main-wrap {
+    width: 100%;
+    float: none; }
+    .main-wrap .center-wrap {
+      width: 100%; } }
+@media screen and (max-width: 767px) {
+  .main-wrap .center-wrap {
+    padding-right: 0; }
+  .main-wrap .right-wrap {
+    display: none; } }
+/* iPad */
+@media screen and (max-width: 479px) {
+  h1, h2 {
+    font-size: 16px; }
+
+  h3 {
+    font-size: 14px; } }
+/* iPhone 6plus */
+/* iPhone 6 */
+/* iPhone 3 4 5 */
+/* Android and + */
+/* Android and + */
+/* 设备分辨率媒体查询 */
+
+/*# sourceMappingURL=doc.css.map */

@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>autoCatalog.js - 自动生成内容大纲 - demo</title>
+    <meta charset="utf-8">
+    <link type="text/css" rel="stylesheet" href="//ui.heanes.com/dist/css/heanesUI.css">
+    <link type="text/css" rel="stylesheet" href="../../src/css/autoCatalog.css">
+    <link type="text/css" rel="stylesheet" href="../static/css/demo.css">
+</head>
+<body>
+<div class="demo-wrap">
+    <div class="page-content">
+        <div class="article-container">
+            <div class="article-title">
+                <h1>文章标题</h1>
+            </div>
+            <div class="article-content" id="articleContent" contenteditable="true">
+                <h2 class="title-text">第一章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h2 class="title-text">第二章</h2>
+                <p class="placeholder ph-mini"></p>
+                <h3 class="title-text">第二章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第二章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h4 class="title-text">第二章第二节第一小节</h4>
+                <p class="placeholder ph-large">内容</p>
+                <h2 class="title-text">第三章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第三章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第三章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第三章第三节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h2 class="title-text">第四章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第四章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第四章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第四章第三节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h2 class="title-text">第五章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第五章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第五章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第五章第三节</h3>
+                <p class="placeholder">内容</p>
+                <h2 class="title-text">第六章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第六章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第六章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第六章第三节</h3>
+                <p class="placeholder">内容</p>
+                <h2 class="title-text">第七章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第七章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第七章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第七章第三节</h3>
+                <p class="placeholder">内容</p>
+                <h2 class="title-text">第八章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第八章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第八章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第八章第三节</h3>
+                <p class="placeholder">内容</p>
+                <h2 class="title-text">第九章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第九章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第九章第二节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第九章第三节</h3>
+                <p class="placeholder">内容</p>
+                <h2 class="title-text">第十章</h2>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第十章第一节</h3>
+                <p class="placeholder ph-large">内容</p>
+                <h3 class="title-text">第十章第二节</h3>
+                <p class="placeholder">内容</p>
+            </div>
+        </div>
+        <div class="side-content">
+            <div class="article-catalog" id="articleCatalog"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/vendor/js/jquery/2.2.4/jquery.2.2.4.min.js"></script>
+<script type="text/javascript" src="../../src/js/autoCatalog.js"></script>
+
+<script type="text/javascript">
+    $(function() {
+        console.clear();
+        var $articleContent = $('#articleContent');
+        /**
+         * @doc 仿百度百科自动生成文章目录导航
+         * @author Heanes
+         * @time 2016-04-13 18:07:26
+         */
+        var option = {
+            catalogContainer:    $('#articleCatalog'),          // 放置生成目录的容器dom
+            formatChapterAnchor: function (chapter) {
+                return chapter.outline.join('.') + '.' + chapter.text;
+            },                                                  // 章节锚链接自定义格式化
+            step:                90,
+            alwaysShow:          false
+        };
+        $articleContent.autoCatalog(option);
+        $articleContent.on('input', function () {
+            $(this).autoCatalog(option);
+        });
+    });
+</script>
+</body>
+</html>
