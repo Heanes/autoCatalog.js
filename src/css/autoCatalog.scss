@@ -106,7 +106,7 @@ $leftTreeLineHeight: 26px;
             .tree-node{
                 &.level1{
                     >.node-wrap{
-                        .outline-symbol{
+                        .chapter-symbol{
                             position: absolute;
                             width: 10px;
                             height: 10px;
@@ -114,6 +114,19 @@ $leftTreeLineHeight: 26px;
                             border: 2px solid #fff;
                             border-radius: 50%;
                             left: -19px;
+                            top: 8px;
+                        }
+                    }
+                }
+                &.level2{
+                    >.node-wrap{
+                        .chapter-symbol{
+                            position: absolute;
+                            width: 8px;
+                            height: 8px;
+                            background-color: #dadada;
+                            border: 2px solid #fff;
+                            left: -18px;
                             top: 8px;
                         }
                     }

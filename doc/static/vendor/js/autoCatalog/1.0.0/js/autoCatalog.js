@@ -481,7 +481,7 @@
                 </div>
             </div>
         </div>`,
-        chapterSymbol: '<em class="outline-symbol"></em>'
+        chapterSymbol: '<em class="chapter-symbol"></em>'
     };
 
     /**
@@ -566,7 +566,7 @@
 
                 // 添加章节符号
                 if(catalogOption.showChapterSymbol){
-                    $treeNodeWrap.append('<em class="outline-symbol"></em>');
+                    $treeNodeWrap.append('<em class="chapter-symbol"></em>');
                 }
 
                 // 添加章节号属性，作为标记
