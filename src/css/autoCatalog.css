@@ -85,11 +85,7 @@
         border: 2px solid #fff;
         left: -18px;
         top: 8px; }
-      .auto-catalog .catalog-list-wrap .catalog-list .tree-node.active > .node-wrap {
-        background: #f5f5f5;
-        border-radius: 2px;
-        box-shadow: 0 1px 0 #eaeaea; }
-      .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap:hover {
+      .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap.active, .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap:hover {
         background: #f5f5f5;
         border-radius: 2px;
         box-shadow: 0 1px 0 #eaeaea; }

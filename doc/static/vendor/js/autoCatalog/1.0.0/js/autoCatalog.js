@@ -9,18 +9,22 @@
     let version = '1.0.0';
 
     let _default = {
-        outlineSelector: ['h2', 'h3', 'h4'],// 大纲选择器，支持多级
-        catalogContainer: undefined,        // 放置生成目录的容器dom
-        autoCounter: false,                 // 是否自动为大纲计数(即自动生成编号)。
-        showChapterNumber: false,           // 是否显示章节编号
-        showChapterSymbol: true,            // 是否显示章节符号
-        formatChapterAnchor: undefined,     // 章节锚链接自定义格式化
-        enableAnimateOnScrollCatalog: true, // 目录滚动时是否使用动画
-        animationDelay: 400,                // 滚动动画延时
-        clickToScrollStep: 48,              // 按钮滚动导航目录步距
-        alwaysShow: true,                   // 是否一直显示目录
-        collapseOnInit: false,              // 初始化时折叠
-        dataChapterFieldName: 'data-chapter',// 章节data字段名称
+        outlineSelector: ['h2', 'h3', 'h4'],    // 大纲选择器，支持多级
+        catalogContainer: undefined,            // 放置生成目录的容器dom
+        autoCounter: false,                     // 是否自动为大纲计数(即自动生成编号)。
+        showChapterNumber: false,               // 是否显示章节编号
+        showChapterSymbol: true,                // 是否显示章节符号
+        formatChapterAnchor: undefined,         // 章节锚链接自定义格式化
+        enableAnimateOnScrollCatalog: true,     // 目录滚动时是否使用动画
+        scrollToContentOffset: 0,               // 点击目录时，页面跳转到对应位置的偏移值
+        scrollContentAnimationDelay: 400,       // 滚动内容的动画延时，为0时没有动画效果
+        scrollCatalogAnimationDelay: 400,       // 目录滚动动画延时
+        clickToScrollCatalogStep: 48,           // 按钮滚动导航目录步距
+        alwaysShow: true,                       // 是否一直显示目录
+        collapseOnInit: false,                  // 初始化时折叠
+        dataChapterFieldName: 'data-chapter',   // 章节data字段名称
+        changeUrlAnchor: true,                 // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
+        onChapterClick: undefined,              // 章节点击事件
         treeOption: {
             // 默认option
             option: {
@@ -151,7 +155,6 @@
         let arrowHalfPositionTop = (catalogItemHeight - arrowHeight) / 2;
 
         let $outlines = this.$outlines, outlineLength = $outlines.length;
-        let clickToScrollStep = options.clickToScrollStep;
 
         let catalogListOutHeight = $catalogListWrap.height();
         let catalogListInnerHeight = $catalogList.height();
@@ -160,8 +163,10 @@
         let $goUpBtn = $catalog.find('.go-up-btn'),
             $goDownBtn = $catalog.find('.go-down-btn');
 
+        let clickToScrollCatalogStep = options.clickToScrollCatalogStep;
         let enableAnimateOnScrollCatalog = options.enableAnimateOnScrollCatalog;
-        let animationDelay = options.animationDelay;
+        let scrollCatalogAnimationDelay = options.scrollCatalogAnimationDelay;
+        let scrollContentAnimationDelay = options.scrollContentAnimationDelay;
         let catalogOffsetTop = 0, locationArrowOffsetTop = 0;
 
         let $chapterItem, $chapterMatched, chapterMatchedPosition, chapterNumberCurrent;
@@ -211,18 +216,18 @@
                             $goUpBtn.removeClass('disabled');
                             $goDownBtn.addClass('disabled');
                         }
-                        enableAnimateOnScrollCatalog ? $catalogList.stop().animate({'top': catalogOffsetTop}, animationDelay) : $catalogList.css({'top': catalogOffsetTop});
-                        //enableAnimateOnScrollCatalog ? $catalogListWrap.animate({scrollTop: -catalogOffsetTop}, animationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
+                        enableAnimateOnScrollCatalog ? $catalogList.stop().animate({'top': catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogList.css({'top': catalogOffsetTop});
+                        //enableAnimateOnScrollCatalog ? $catalogListWrap.animate({scrollTop: -catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
                     }
 
                     // 3. 左侧定位滑块滑动
                     locationArrowOffsetTop = chapterMatchedPosition.top + arrowHalfPositionTop;
-                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, animationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
+                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
 
                     return false;// 匹配到后立即跳出each循环
                 }else{
                     locationArrowOffsetTop = arrowHalfPositionTop;
-                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, animationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
+                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
                     $catalogItemList.removeClass('active').eq(0).addClass('active');
                 }
             }
@@ -237,6 +242,24 @@
             }
         });
 
+        // 内容定位到对应位置。支持偏移值
+        if(!options.changeUrlAnchor || options.scrollToContentOffset > 0){
+            $catalog.on('click', function (event) {
+                let $htmlBody = $('html,body');
+                let $target = $(event.target);
+                let $nodeWrap = $target.hasClass('node-wrap') ? $target : $target.closest('.node-wrap');
+                if(options.changeUrlAnchor){
+                    window.location.href = window.location.href.split("#")[0] + $nodeWrap.attr('href');
+                }else{
+                    let chapterCurrent = $nodeWrap.attr(options.dataChapterFieldName);
+                    console.log(options.dataChapterFieldName + '="' + chapterCurrent + '"');
+                    let $contentMatched = _this.$element.find('[' + options.dataChapterFieldName + '="' + chapterCurrent + '"]');
+                    $htmlBody.animate({scrollTop: $contentMatched.offset().top + options.scrollToContentOffset}, scrollContentAnimationDelay)
+                }
+                return false;
+            });
+        }
+
         /*setInterval(function () {
             //console.log('scrollTop', scrollTop);
             console.log('matchScroll', matchScroll);
@@ -247,8 +270,8 @@
         $goUpBtn.on('click', function () {
             let $this = $(this);
             if(!$this.hasClass('disabled')){
-                if (Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollStep) {
-                    $catalogList.stop().animate({'top': '+=' + clickToScrollStep}, 'fast');
+                if (Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
+                    $catalogList.stop().animate({'top': '+=' + clickToScrollCatalogStep}, 'fast');
                     $goDownBtn.removeClass('disabled');
                 }else{
                     $catalogList.stop().animate({'top': '0'}, 'fast');
@@ -260,8 +283,8 @@
         $goDownBtn.on('click', function () {
             let $this = $(this);
             if(!$this.hasClass('disabled')){
-                if (overHeight - Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollStep) {
-                    $catalog.find('.catalog-list').stop().animate({'top': '-=' + clickToScrollStep}, 'fast');
+                if (overHeight - Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
+                    $catalog.find('.catalog-list').stop().animate({'top': '-=' + clickToScrollCatalogStep}, 'fast');
                     $goUpBtn.removeClass('disabled');
                 }else{
                     $catalogList.stop().animate({'top': -overHeight}, 'fast');
@@ -570,7 +593,7 @@
                 }
 
                 // 添加章节号属性，作为标记
-                $treeNodeLi.attr(catalogOption.dataChapterFieldName, node.outline.join('.'));
+                $treeNodeWrap.attr(catalogOption.dataChapterFieldName, node.outline.join('.'));
 
                 // 添加到dom中
                 $treeUl.append($treeNodeLi.append($treeNodeWrap));
@@ -667,6 +690,9 @@
     AutoCatalog.prototype.handleToStandardOption = function (options) {
         let defaultOption = this.getDefaults();
         options = $.extend({}, defaultOption, this.$element.data(), options);
+        if(!options.changeUrlAnchor){
+            options.treeOption.option.enableLink = false;
+        }
         return options;
     };
 
