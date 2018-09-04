@@ -15,15 +15,14 @@
         showChapterNumber: false,               // 是否显示章节编号
         showChapterSymbol: true,                // 是否显示章节符号
         formatChapterAnchor: undefined,         // 章节锚链接自定义格式化
-        enableAnimateOnScrollCatalog: true,     // 目录滚动时是否使用动画
-        scrollToContentOffset: 0,               // 点击目录时，页面跳转到对应位置的偏移值
+        changeUrlAnchor: true,                  // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
         scrollContentAnimationDelay: 400,       // 滚动内容的动画延时，为0时没有动画效果
-        scrollCatalogAnimationDelay: 400,       // 目录滚动动画延时
-        clickToScrollCatalogStep: 48,           // 按钮滚动导航目录步距
+        scrollToContentOffset: 0,               // 点击目录时，页面跳转到对应章节处的偏移值
+        scrollCatalogAnimationDelay: 400,       // 目录滚动动画延时，为0时没有动画效果
+        clickToScrollCatalogStep: 48,           // 当目录较长时，右侧会出现使目录上下滚动的按钮，此值定义点击一次按钮滚动导航目录移动的高度
         alwaysShow: true,                       // 是否一直显示目录
         collapseOnInit: false,                  // 初始化时折叠
         dataChapterFieldName: 'data-chapter',   // 章节data字段名称
-        changeUrlAnchor: true,                  // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
         onChapterClick: undefined,              // 章节点击事件
         treeOption: {
             // 默认option
@@ -164,7 +163,6 @@
             $goDownBtn = $catalog.find('.go-down-btn');
 
         let clickToScrollCatalogStep = options.clickToScrollCatalogStep;
-        let enableAnimateOnScrollCatalog = options.enableAnimateOnScrollCatalog;
         let scrollCatalogAnimationDelay = options.scrollCatalogAnimationDelay;
         let scrollContentAnimationDelay = options.scrollContentAnimationDelay;
         let catalogOffsetTop = 0, locationArrowOffsetTop = 0;
@@ -216,18 +214,18 @@
                             $goUpBtn.removeClass('disabled');
                             $goDownBtn.addClass('disabled');
                         }
-                        enableAnimateOnScrollCatalog ? $catalogList.stop().animate({'top': catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogList.css({'top': catalogOffsetTop});
-                        //enableAnimateOnScrollCatalog ? $catalogListWrap.animate({scrollTop: -catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
+                        scrollCatalogAnimationDelay > 0 ? $catalogList.stop().animate({'top': catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogList.css({'top': catalogOffsetTop});
+                        //scrollCatalogAnimationDelay > 0 ? $catalogListWrap.animate({scrollTop: -catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
                     }
 
                     // 3. 左侧定位滑块滑动
                     locationArrowOffsetTop = chapterMatchedPosition.top + arrowHalfPositionTop;
-                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
+                    scrollCatalogAnimationDelay > 0 ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
 
                     return false;// 匹配到后立即跳出each循环
                 }else{
                     locationArrowOffsetTop = arrowHalfPositionTop;
-                    enableAnimateOnScrollCatalog ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
+                    scrollCatalogAnimationDelay > 0 ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
                     $catalogItemList.removeClass('active').eq(0).addClass('active');
                 }
             }
@@ -254,7 +252,11 @@
                     let chapterCurrent = $nodeWrap.attr(options.dataChapterFieldName);
                     console.log(options.dataChapterFieldName + '="' + chapterCurrent + '"');
                     let $contentMatched = _this.$element.find('[' + options.dataChapterFieldName + '="' + chapterCurrent + '"]');
-                    $htmlBody.animate({scrollTop: $contentMatched.offset().top + options.scrollToContentOffset}, scrollContentAnimationDelay)
+                    if(scrollContentAnimationDelay > 0){
+                        $htmlBody.animate({scrollTop: $contentMatched.offset().top + options.scrollToContentOffset}, scrollContentAnimationDelay)
+                    }else{
+                        $htmlBody.scrollTop($contentMatched.offset().top + options.scrollToContentOffset);
+                    }
                 }
                 return false;
             });
