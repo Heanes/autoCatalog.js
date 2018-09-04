@@ -34,33 +34,93 @@
             </tr>
             <tr>
                 <td>2</td>
+                <td>catalogContainer</td>
+                <td>dom || jQuery dom</td>
+                <td>undefined</td>
+                <td>放置生成目录的容器dom</td>
+            </tr>
+            <tr>
+                <td>3</td>
                 <td>autoCounter</td>
                 <td>boolean</td>
                 <td>false</td>
                 <td>是否自动为大纲计数(即自动生成编号)</td>
             </tr>
             <tr>
-                <td>2</td>
+                <td>4</td>
                 <td>showChapterNumber</td>
                 <td>boolean</td>
                 <td>false</td>
                 <td>是否显示章节编号</td>
             </tr>
             <tr>
-                <td>2</td>
+                <td>5</td>
                 <td>showChapterSymbol</td>
                 <td>boolean</td>
                 <td>false</td>
                 <td>是否显示章节符号</td>
             </tr>
             <tr>
-                <td></td>
-                <td>catalogContainer</td>
-                <td>dom || jQuery dom</td>
+                <td>6</td>
+                <td>formatChapterAnchor(chapter)</td>
+                <td>function</td>
                 <td>undefined</td>
-                <td>放置生成目录的容器dom</td>
+                <td>
+                    <p>章节锚链接自定义格式化</p>
+                    <p>参数：chapter 章节对象，具体值可以调试查看</p>
+                    <p>默认效果是形如"1.1 第一章第一节"这种效果</p>
+                </td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>changeUrlAnchor</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项。</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>scrollContentAnimationDelay</td>
+                <td>number</td>
+                <td>400</td>
+                <td>滚动内容的动画延时，为0时没有动画效果</td>
+            </tr>
+            <tr>
+                <td>8</td>
+                <td>scrollToContentOffset</td>
+                <td>number</td>
+                <td>0</td>
+                <td>点击目录时，页面跳转到对应章节处的偏移值</td>
             </tr>
             </tbody>
+            <tr>
+                <td>9</td>
+                <td>scrollCatalogAnimationDelay</td>
+                <td>number</td>
+                <td>400</td>
+                <td>目录滚动动画延时，为0时没有动画效果</td>
+            </tr>
+            <tr>
+                <td>10</td>
+                <td>clickToScrollCatalogStep</td>
+                <td>number</td>
+                <td>48</td>
+                <td>当目录较长时，右侧会出现使目录上下滚动的按钮，此值定义点击一次按钮滚动导航目录移动的高度</td>
+            </tr>
+            <tr>
+                <td>11</td>
+                <td>alwaysShow</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>是否一直显示目录。若为<code>false</code>，则当文章内容不在页面视窗范围中时，目录自动隐藏。</td>
+            </tr>
+            <tr>
+                <td>12</td>
+                <td>collapseOnInit</td>
+                <td>boolean</td>
+                <td>false</td>
+                <td>初始化时是否折叠显示。<code>true</code> - 折叠显示，<code>false</code>正常显示</td>
+            </tr>
         </table>
     </div>
     <div class="option-description">
