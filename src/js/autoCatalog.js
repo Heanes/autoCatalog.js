@@ -23,7 +23,7 @@
         alwaysShow: true,                       // 是否一直显示目录
         collapseOnInit: false,                  // 初始化时折叠
         dataChapterFieldName: 'data-chapter',   // 章节data字段名称
-        changeUrlAnchor: true,                 // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
+        changeUrlAnchor: true,                  // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
         onChapterClick: undefined,              // 章节点击事件
         treeOption: {
             // 默认option
