@@ -147,8 +147,8 @@
 
         let $catalogListWrap = $catalog.find('.catalog-list-wrap');
         let $catalogList = $catalog.find('.catalog-list');
-        let $catalogItemList = $catalog.find('.tree-node');
-        let catalogItemHeight = $catalogItemList.find('.node-wrap').eq(0).height();
+        let $catalogItemList = $catalog.find('.node-wrap');
+        let catalogItemHeight = $catalogItemList.eq(0).height();
 
         let $scrollbarLocationArrow = $catalog.find('.scrollbar-location-arrow');
         let arrowHeight = $scrollbarLocationArrow.height();
