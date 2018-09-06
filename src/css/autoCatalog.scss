@@ -9,7 +9,9 @@ $height: 200px;
 
 $scrollbarColor: #eaeaea;
 $circleWidth: 10px;
-$circleColor: #ddd;
+$circleColor: #fff;
+$circleBorderColor:#ccc;
+$circleBorderWidth: 2px;
 
 $chapterNumberColor: #999;
 $chapterTextColor: #444;
@@ -61,6 +63,7 @@ $leftTreeLineHeight: 26px;
                 width: $circleWidth;
                 height: $circleWidth;
                 background-color: $circleColor;
+                border: 2px solid $circleBorderColor;
                 border-radius: 50%;
                 zoom: 1;
                 overflow: hidden;

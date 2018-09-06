@@ -43,7 +43,8 @@
       left: -5px;
       width: 10px;
       height: 10px;
-      background-color: #ddd;
+      background-color: #fff;
+      border: 2px solid #ccc;
       border-radius: 50%;
       zoom: 1;
       overflow: hidden; }
