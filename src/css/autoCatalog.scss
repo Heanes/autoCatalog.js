@@ -106,6 +106,7 @@ $leftTreeLineHeight: 26px;
             .tree-node{
                 &.level1{
                     >.node-wrap{
+                        font-weight: 600;
                         .chapter-symbol{
                             position: absolute;
                             width: 10px;

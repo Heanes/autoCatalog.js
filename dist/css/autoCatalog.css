@@ -68,15 +68,17 @@
       .auto-catalog .catalog-list-wrap .catalog-list .chapter-item .chapter-text {
         line-height: 20px;
         color: #444; }
-      .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level1 > .node-wrap .chapter-symbol {
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        background-color: #ccc;
-        border: 2px solid #fff;
-        border-radius: 50%;
-        left: -19px;
-        top: 8px; }
+      .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level1 > .node-wrap {
+        font-weight: 600; }
+        .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level1 > .node-wrap .chapter-symbol {
+          position: absolute;
+          width: 10px;
+          height: 10px;
+          background-color: #ccc;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          left: -19px;
+          top: 8px; }
       .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level2 > .node-wrap .chapter-symbol {
         position: absolute;
         width: 8px;
