@@ -250,7 +250,7 @@
                     window.location.href = window.location.href.split("#")[0] + $nodeWrap.attr('href');
                 }else{
                     let chapterCurrent = $nodeWrap.attr(options.dataChapterFieldName);
-                    console.log(options.dataChapterFieldName + '="' + chapterCurrent + '"');
+                    //console.log(options.dataChapterFieldName + '="' + chapterCurrent + '"');
                     let $contentMatched = _this.$element.find('[' + options.dataChapterFieldName + '="' + chapterCurrent + '"]');
                     if(scrollContentAnimationDelay > 0){
                         $htmlBody.animate({scrollTop: $contentMatched.offset().top + options.scrollToContentOffset}, scrollContentAnimationDelay)
@@ -350,7 +350,7 @@
             $chapter.attr(options.dataChapterFieldName, node.outline.join('.'));
         });
 
-        console.log(treeData);
+        //console.log(treeData);
         return treeData;
     };
 
