@@ -57,46 +57,57 @@
     z-index: 1;
     height: 100%;
     padding-top: 8px;
-    padding-left: 20px;
+    padding-left: 14px;
     padding-bottom: 8px;
     overflow: hidden; }
     .auto-catalog .catalog-list-wrap .catalog-list {
       position: relative;
       top: 0; }
       .auto-catalog .catalog-list-wrap .catalog-list .chapter-item .chapter-number {
-        color: #999;
+        color: #666;
         margin-right: 2px; }
       .auto-catalog .catalog-list-wrap .catalog-list .chapter-item .chapter-text {
         line-height: 20px;
-        color: #444; }
+        color: #333; }
+      .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap .chapter-symbol {
+        display: inline-block;
+        width: 4px;
+        height: 4px;
+        background-color: #888;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 4px;
+        margin-top: -4px; }
       .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level1 > .node-wrap {
         font-weight: 600; }
         .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level1 > .node-wrap .chapter-symbol {
           position: absolute;
           width: 10px;
           height: 10px;
-          background-color: #ccc;
+          background-color: #888;
           border: 2px solid #fff;
           border-radius: 50%;
-          left: -19px;
-          top: 8px; }
-      .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level2 > .node-wrap .chapter-symbol {
+          left: -13px;
+          top: 8px;
+          margin: 0; }
+      .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level22 > .node-wrap .chapter-symbol {
         position: absolute;
-        width: 8px;
-        height: 8px;
-        background-color: #dadada;
-        border: 2px solid #fff;
-        left: -18px;
-        top: 8px; }
+        width: 4px;
+        height: 4px;
+        background-color: #888;
+        border-radius: 50%;
+        left: 8px;
+        top: 50%;
+        margin-top: -2px; }
       .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap.active, .auto-catalog .catalog-list-wrap .catalog-list .tree-node > .node-wrap:hover {
         background: #f5f5f5;
         border-radius: 2px;
         box-shadow: 0 1px 0 #eaeaea; }
     .auto-catalog .catalog-list-wrap .scrollbar-location-arrow {
       position: absolute;
-      left: -20px;
+      left: -14px;
       top: 8px;
-      width: 18px;
+      width: 14px;
       height: 10px;
       line-height: 10px;
       cursor: pointer;
@@ -109,7 +120,7 @@
         line-height: 10px; }
       .auto-catalog .catalog-list-wrap .scrollbar-location-arrow .rectangle {
         display: inline-block;
-        width: 12px;
+        width: 8px;
         height: 10px;
         background-color: #136ec2; }
       .auto-catalog .catalog-list-wrap .scrollbar-location-arrow .triangle-right {

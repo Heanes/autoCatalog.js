@@ -12,7 +12,7 @@
         outlineSelector: ['h2', 'h3', 'h4'],    // 大纲选择器，支持多级
         catalogContainer: undefined,            // 放置生成目录的容器dom
         autoCounter: false,                     // 是否自动为大纲计数(即自动生成编号)。
-        showChapterNumber: false,               // 是否显示章节编号
+        showChapterNumber: true,                // 是否显示章节编号
         showChapterSymbol: true,                // 是否显示章节符号
         formatChapterAnchor: undefined,         // 章节锚链接自定义格式化
         changeUrlAnchor: true,                  // 是否更改页面URL的锚链接。目前许多网页应用使用#做页面路由，所以增加此选项
@@ -545,6 +545,11 @@
                     $treeNodeWrap.append(_this.treeTemplate.indent);
                 }
 
+                // 添加章节符号
+                if(catalogOption.showChapterSymbol){
+                    $treeNodeWrap.append('<em class="chapter-symbol"></em>');
+                }
+
                 // 有子树的添加折叠及其他样式
                 let ceIconClassList = [];
                 if (node.nodes && node.nodes.length > 0) {
@@ -588,11 +593,6 @@
 
                 // 添加文字及链接
                 $treeNodeWrap.append($(_this.treeTemplate.nodeText).append(node.text).addClass('chapter-text'));
-
-                // 添加章节符号
-                if(catalogOption.showChapterSymbol){
-                    $treeNodeWrap.append('<em class="chapter-symbol"></em>');
-                }
 
                 // 添加章节号属性，作为标记
                 $treeNodeWrap.attr(catalogOption.dataChapterFieldName, node.outline.join('.'));
