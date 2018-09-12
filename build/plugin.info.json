@@ -16,7 +16,7 @@
         "jquery": ">=1.7"
     },
     "keywords":     [
-        "bootstrap.table"
+        "autoCatalog, catalog"
     ],
     "homepage":     "https://github.com/heanes/autoCatalog.js",
     "demo":         "https://github.com/heanes/autoCatalog.js",
