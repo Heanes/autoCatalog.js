@@ -132,8 +132,8 @@ $leftTreeLineHeight: 26px;
                             border: 2px solid #fff;
                             border-radius: 50%;
                             left: -$catalogListWrapPaddingLeft + 1;
-                            top: 8px;
-                            margin: 0;
+                            top: 50%;
+                            margin-top: -5px;
                         }
                     }
                 }

@@ -88,8 +88,8 @@
           border: 2px solid #fff;
           border-radius: 50%;
           left: -13px;
-          top: 8px;
-          margin: 0; }
+          top: 50%;
+          margin-top: -5px; }
       .auto-catalog .catalog-list-wrap .catalog-list .tree-node.level22 > .node-wrap .chapter-symbol {
         position: absolute;
         width: 4px;
