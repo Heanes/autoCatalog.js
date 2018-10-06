@@ -147,11 +147,10 @@
         let $catalogListWrap = $catalog.find('.catalog-list-wrap');
         let $catalogList = $catalog.find('.catalog-list');
         let $catalogItemList = $catalog.find('.node-wrap');
-        let catalogItemHeight = $catalogItemList.eq(0).height();
+        let catalogItemFirstHeight = $catalogItemList.eq(0).height();
 
         let $scrollbarLocationArrow = $catalog.find('.scrollbar-location-arrow');
         let arrowHeight = $scrollbarLocationArrow.height();
-        let arrowHalfPositionTop = (catalogItemHeight - arrowHeight) / 2;
 
         let $outlines = this.$outlines, outlineLength = $outlines.length;
 
@@ -183,18 +182,19 @@
             // 从后向前匹配，匹配到了便立即返回
             for(let i = outlineLength - 1; i > 0; i--){
                 $chapterItem = $outlines.eq(i);
-                matchScroll = scrollTop >= $chapterItem.offset().top - catalogItemHeight;
+                matchScroll = scrollTop >= $chapterItem.offset().top - catalogItemFirstHeight;
                 if(matchScroll){
                     chapterNumberCurrent = $chapterItem.attr(options.dataChapterFieldName);
                     $chapterMatched = $catalogList.find('[' + options.dataChapterFieldName + '="' + chapterNumberCurrent + '"]');
                     chapterMatchedPosition = $chapterMatched.position();
+                    console.log(chapterMatchedPosition);
                     // 1. 自动定位章节
                     $catalogItemList.removeClass('active');
                     $chapterMatched.addClass('active');
 
                     // 2. 显示区域滑动
                     if(overHeight > 0){
-                        if(chapterMatchedPosition.top + catalogItemHeight <= catalogListOutHeight){
+                        if(chapterMatchedPosition.top + catalogItemFirstHeight <= catalogListOutHeight){
                             //console.log('top');
                             catalogOffsetTop = 0;
                             // 右侧操作按钮显示、隐藏
@@ -202,9 +202,9 @@
                             $goDownBtn.removeClass('disabled');
                         }
                         // 如果超出显示范围
-                        else if ((chapterMatchedPosition.top + catalogItemHeight > catalogListOutHeight) && (chapterMatchedPosition.top < overHeight)){
+                        else if ((chapterMatchedPosition.top + catalogItemFirstHeight > catalogListOutHeight) && (chapterMatchedPosition.top < overHeight)){
                             //console.log('middle');
-                            catalogOffsetTop = -chapterMatchedPosition.top + catalogListOutHeight / 2 - catalogItemHeight;
+                            catalogOffsetTop = -chapterMatchedPosition.top + catalogListOutHeight / 2 - catalogItemFirstHeight;
                             // 右侧操作按钮显示、隐藏
                             $goUpBtn.removeClass('disabled');
                             $goDownBtn.removeClass('disabled');
@@ -219,12 +219,12 @@
                     }
 
                     // 3. 左侧定位滑块滑动
-                    locationArrowOffsetTop = chapterMatchedPosition.top + arrowHalfPositionTop;
+                    locationArrowOffsetTop = chapterMatchedPosition.top + ($chapterMatched.height() - arrowHeight) / 2;
                     scrollCatalogAnimationDelay > 0 ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
 
                     return false;// 匹配到后立即跳出each循环
                 }else{
-                    locationArrowOffsetTop = arrowHalfPositionTop;
+                    locationArrowOffsetTop = (catalogItemFirstHeight - arrowHeight) / 2;
                     scrollCatalogAnimationDelay > 0 ? $scrollbarLocationArrow.stop().animate({'top': locationArrowOffsetTop}, scrollCatalogAnimationDelay) : $scrollbarLocationArrow.css({'top': locationArrowOffsetTop});
                     $catalogItemList.removeClass('active').eq(0).addClass('active');
                 }
@@ -531,11 +531,6 @@
 
             let $treeNodeLi = $(_this.treeTemplate.node).attr('data-nodeId', node.nodeId);
             let $treeNodeWrap = $(_this.treeTemplate.nodeWrap);
-            if (options.enableLink){
-                $treeNodeWrap = $(_this.treeTemplate.nodeLink);
-                $treeNodeWrap.attr('href', node.href);
-                if(node.target !== undefined) $treeNodeWrap.attr('target', node.target);
-            }
 
             {
                 // 左侧树
