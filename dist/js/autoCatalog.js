@@ -187,7 +187,6 @@
                     chapterNumberCurrent = $chapterItem.attr(options.dataChapterFieldName);
                     $chapterMatched = $catalogList.find('[' + options.dataChapterFieldName + '="' + chapterNumberCurrent + '"]');
                     chapterMatchedPosition = $chapterMatched.position();
-                    console.log(chapterMatchedPosition);
                     // 1. 自动定位章节
                     $catalogItemList.removeClass('active');
                     $chapterMatched.addClass('active');
