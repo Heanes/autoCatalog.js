@@ -60,6 +60,25 @@
     padding-left: 14px;
     padding-bottom: 8px;
     overflow: hidden; }
+    .auto-catalog .catalog-list-wrap.auto-scroll {
+      overflow: auto; }
+    .auto-catalog .catalog-list-wrap::-webkit-scrollbar {
+      width: 6px;
+      height: 6px; }
+    .auto-catalog .catalog-list-wrap::-webkit-scrollbar-track {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 3px; }
+    .auto-catalog .catalog-list-wrap::-webkit-scrollbar-button {
+      width: 0;
+      height: 0; }
+    .auto-catalog .catalog-list-wrap::-webkit-scrollbar-thumb {
+      min-height: 20px;
+      background: rgba(0, 0, 0, 0.39);
+      border-radius: 3px; }
+    .auto-catalog .catalog-list-wrap::-webkit-scrollbar, .auto-catalog .catalog-list-wrap::-webkit-scrollbar-button, .auto-catalog .catalog-list-wrap::-webkit-scrollbar-thumb, .auto-catalog .catalog-list-wrap::-webkit-scrollbar-track {
+      visibility: hidden; }
+    .auto-catalog .catalog-list-wrap:hover::-webkit-scrollbar, .auto-catalog .catalog-list-wrap:hover::-webkit-scrollbar-button, .auto-catalog .catalog-list-wrap:hover::-webkit-scrollbar-thumb, .auto-catalog .catalog-list-wrap:hover::-webkit-scrollbar-track {
+      visibility: visible; }
     .auto-catalog .catalog-list-wrap .catalog-list {
       position: relative;
       top: 0; }

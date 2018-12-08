@@ -19,6 +19,7 @@
         scrollContentAnimationDelay: 400,       // 滚动内容的动画延时，为0时没有动画效果
         scrollToContentOffset: 0,               // 点击目录时，页面跳转到对应章节处的偏移值
         scrollCatalogAnimationDelay: 400,       // 目录滚动动画延时，为0时没有动画效果
+        useButtonToScroll: false,               // 是否使用按钮来滚动目录
         clickToScrollCatalogStep: 48,           // 当目录较长时，右侧会出现使目录上下滚动的按钮，此值定义点击一次按钮滚动导航目录移动的高度
         alwaysShow: true,                       // 是否一直显示目录
         collapseOnInit: false,                  // 初始化时折叠
@@ -177,7 +178,7 @@
         // 滚动事件
         $(window).on('scroll', function () {
             scrollTop = $(this).scrollTop();
-            
+
             // 滚动时，1. 左侧进度自动跟随定位，2. 目录自动滚动
             // 从后向前匹配，匹配到了便立即返回
             for(let i = outlineLength - 1; i > 0; i--){
@@ -266,34 +267,38 @@
             console.log('matchScroll', matchScroll);
             console.log('chapterMatchedPosition', chapterMatchedPosition);
         }, 1000);*/
-
-        // 右侧工具条点击驱使目录滚动
-        $goUpBtn.on('click', function () {
-            let $this = $(this);
-            if(!$this.hasClass('disabled')){
-                if (Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
-                    $catalogList.stop().animate({'top': '+=' + clickToScrollCatalogStep}, 'fast');
-                    $goDownBtn.removeClass('disabled');
-                }else{
-                    $catalogList.stop().animate({'top': '0'}, 'fast');
-                    $this.addClass('disabled');
+        if(options.useButtonToScroll){
+            // 右侧工具条点击驱使目录滚动
+            $goUpBtn.on('click', function () {
+                let $this = $(this);
+                if(!$this.hasClass('disabled')){
+                    if (Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
+                        $catalogList.stop().animate({'top': '+=' + clickToScrollCatalogStep}, 'fast');
+                        $goDownBtn.removeClass('disabled');
+                    }else{
+                        $catalogList.stop().animate({'top': '0'}, 'fast');
+                        $this.addClass('disabled');
+                    }
                 }
-            }
-            return false;
-        });
-        $goDownBtn.on('click', function () {
-            let $this = $(this);
-            if(!$this.hasClass('disabled')){
-                if (overHeight - Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
-                    $catalog.find('.catalog-list').stop().animate({'top': '-=' + clickToScrollCatalogStep}, 'fast');
-                    $goUpBtn.removeClass('disabled');
-                }else{
-                    $catalogList.stop().animate({'top': -overHeight}, 'fast');
-                    $this.addClass('disabled');
+                return false;
+            });
+            $goDownBtn.on('click', function () {
+                let $this = $(this);
+                if(!$this.hasClass('disabled')){
+                    if (overHeight - Math.abs(parseInt($catalogList.css('top'))) >= clickToScrollCatalogStep) {
+                        $catalog.find('.catalog-list').stop().animate({'top': '-=' + clickToScrollCatalogStep}, 'fast');
+                        $goUpBtn.removeClass('disabled');
+                    }else{
+                        $catalogList.stop().animate({'top': -overHeight}, 'fast');
+                        $this.addClass('disabled');
+                    }
                 }
-            }
-            return false;
-        });
+                return false;
+            });
+        }else{
+            $catalogListWrap.addClass('auto-scroll');
+            $catalog.find('.catalog-scrollbar-right').remove();
+        }
 
         // ----- 底部工具条功能
         let $goTopBtn = $catalog.find('.go-top-btn'),
@@ -519,7 +524,7 @@
         let catalogOption = this.options;
         let options = this.options.treeOption.option;
         // 如果开启切换，则顶级当作0级
-        level = level === undefined ? (options.overHeightSwitch ? 0 : 1) : level;
+        level = level === undefined ? 1 : level;
         //console.log(level);
 
         let _this = this;
@@ -530,6 +535,11 @@
 
             let $treeNodeLi = $(_this.treeTemplate.node).attr('data-nodeId', node.nodeId);
             let $treeNodeWrap = $(_this.treeTemplate.nodeWrap);
+            if (options.enableLink){
+                $treeNodeWrap = $(_this.treeTemplate.nodeLink);
+                $treeNodeWrap.attr('href', node.href);
+                if(node.target !== undefined) $treeNodeWrap.attr('target', node.target);
+            }
 
             {
                 // 左侧树
