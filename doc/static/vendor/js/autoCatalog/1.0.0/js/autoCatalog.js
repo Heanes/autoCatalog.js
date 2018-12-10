@@ -214,8 +214,12 @@
                             $goUpBtn.removeClass('disabled');
                             $goDownBtn.addClass('disabled');
                         }
-                        scrollCatalogAnimationDelay > 0 ? $catalogList.stop().animate({'top': catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogList.css({'top': catalogOffsetTop});
-                        //scrollCatalogAnimationDelay > 0 ? $catalogListWrap.animate({scrollTop: -catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
+                        // 如果使用按钮点击来上下滚动目录
+                        if(options.useButtonToScroll){
+                            scrollCatalogAnimationDelay > 0 ? $catalogList.stop().animate({'top': catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogList.css({'top': catalogOffsetTop});
+                        }else{
+                            scrollCatalogAnimationDelay > 0 ? $catalogListWrap.stop().animate({scrollTop: -catalogOffsetTop}, scrollCatalogAnimationDelay) : $catalogListWrap.scrollTop(-catalogOffsetTop); // 不使用右侧按钮点击滚动功能，而使用原生滚动条时
+                        }
                     }
 
                     // 3. 左侧定位滑块滑动
